@@ -1,0 +1,133 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
+import { getCollection } from 'astro:content';
+import FormattedDate from '../../components/FormattedDate.astro';
+import { Image } from 'astro:assets';
+import CubicleImported from '/Users/PC/Documents/Prueba-tecnica/public/images/cubiclie.jpg';
+import DNM from 'C:/Users/PC/Documents/Prueba-tecnica/public/images/DNM.jpg';
+import Card from '../../components/CardDNM.astro';
+import CardDNM from '../../components/CardDNM.astro';
+import CardDignitas from '../../components/CardDignitas.astro';
+import CardSilk from '../../components/CardSilk.astro';
+import CardGravitas from '../../components/CardGravitas.astro';
+import CardSpeedy from '../../components/CardSpeedy.astro';
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+);
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<style>
+			main {
+				width: 960px;
+			}
+			ul {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 2rem;
+				list-style-type: none;
+				margin: 0;
+				padding: 2;
+			}
+			ul li {
+				width: calc(50% - 1rem);
+			}
+			ul li * {
+				text-decoration: none;
+				transition: 0.2s ease;
+			}
+			ul li:first-child {
+				width: 100%;
+				margin-bottom: 1rem;
+				text-align: center;
+			}
+			ul li:first-child img {
+				width: 100%;
+			}
+			ul li:first-child .title {
+				font-size: 2.369rem;
+			}
+			ul li img {
+				margin-bottom: 0.5rem;
+				border-radius: 12px;
+			}
+			ul li a {
+				display: block;
+			}
+			.title {
+				margin: 0;
+				color: rgb(var(--black));
+				line-height: 1;
+			}
+			.date {
+				margin: 0;
+				color: rgb(var(--gray));
+			}
+			ul li a:hover h4,
+			ul li a:hover .date {
+				color: rgb(var(--accent));
+			}
+			ul a:hover img {
+				box-shadow: var(--box-shadow);
+			}
+			@media (max-width: 720px) {
+				ul {
+					gap: 0.5em;
+				}
+				ul li {
+					width: 100%;
+					text-align: center;
+				}
+				ul li:first-child {
+					margin-bottom: 0;
+				}
+				ul li:first-child .title {
+					font-size: 1.563em;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<section>
+				<ul>
+					<Image src={CubicleImported} alt={"Lubricantes de The Cubicle"}></Image>
+					<h2 class="text-justify text-blue-500 font-bold">Lubricantes oficiales de TheCubicle</h2> 
+				</ul>
+			</section>
+			
+			<section align="center">
+
+				<CardDNM title="DNM"></CardDNM>
+				<CardDignitas title="Angstrom Dignitas"></CardDignitas>
+				<CardGravitas title="Angstrom Gravitas"></CardGravitas>
+				<CardSilk title="Silk"></CardSilk>
+				<CardSpeedy title="Speedy"></CardSpeedy>
+
+			</section>
+
+			<section>
+				<p class="text-lg font-bold text-green-600">Personaliza tu servicio eligiendo múltiples fases 
+					de lubricación.
+				</p>
+				<p class="text-lg font-bold text-green-600">Servicio de limpieza piezas internas y mecanismo, ajuste de tensiones,
+					zonas externas y ejes.
+				</p>
+				<p class="text-lg font-bold text-green-600">Recolección y entrega a domicilio con 
+					costo extra.
+				</p>
+				<p class="text-lg font-bold text-green-600">Ajuste personalizado de imanes según modelo/marca.  
+				</p>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>

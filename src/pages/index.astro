@@ -1,0 +1,36 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<h1 class="text-3xl font-bold underline"> Hola cuber</h1>
+			<p>
+				Bienvenido a Lubs & Maintaince. Somos un grupo de speecubers 
+				con la intención de ofrecer mantenimiento y lubricación de puzzles
+				oficiales en la <a href="https://www.worldcubeassociation.org/" target="_blank">WCA.</a>
+			</p>
+			<p>
+				Ofrecemos servicio de limpieza interna y lubricación personalizada para lograr la configuración 
+				que necesitas para desbloquear un nuevo nivel de experiencia sobre la ejecución.
+			</p>
+			<p>Contamos con lubricantes importados desde <a href="https://www.thecubicle.com/en-mx" target="_blank"> The Cubicle</a>
+				para ofrecer la mejor calidad en lubricantes y lograr una experiencia convincente.
+			</p>
+			
+			<p>
+				Somos especialistas en el mantenimiento de puzzles de Rubik ¡No dudes en contactarnos!
+			</p>
+		</main>
+		<Footer />
+	</body>
+</html>
